@@ -76,9 +76,13 @@ func main() {
 			if !file.Generate {
 				continue
 			}
+			data := parseFile(path, file)
+			if len(data.Services) == 0 {
+				continue
+			}
 			return tpl.Execute(
 				plugin.NewGeneratedFile(file.GeneratedFilenamePrefix+"_grpc_mock.pb.go", file.GoImportPath),
-				parseFile(path, file),
+				data,
 			)
 		}
 		return nil
