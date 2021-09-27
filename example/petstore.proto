@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+package petstore;
+
+option go_package = "./;petstore";
+
+import "google/protobuf/empty.proto";
+
+enum Status {
+  UNKNOWN = 0;
+  AVAILABLE = 1;
+  PENDING = 2;
+  SOLD = 3;
+}
+
+message Pet {
+  string id = 1;
+  string name = 2;
+  Status status = 3;
+}
+
+message Pets {
+  repeated Pet pets = 1;
+}
+
+service PetStore {
+  rpc GetAll(google.protobuf.Empty) returns (Pets) {}
+  rpc GetPet(Pet) returns (Pet) {}
+  rpc CreatePet(Pet) returns (Pet) {}
+  rpc UpdatePet(Pet) returns (Pet) {}
+  rpc DeletePet(Pet) returns (google.protobuf.Empty) {}
+}
