@@ -36,6 +36,46 @@ func (m *MockPetStoreClient) EXPECT() *MockPetStoreClientMockRecorder {
 	return m.recorder
 }
 
+// CreatePet mocks base method.
+func (m *MockPetStoreClient) CreatePet(ctx context.Context, in *Pet, opts ...grpc.CallOption) (*Pet, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{ctx, in}
+	for _, a := range opts {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "CreatePet", varargs...)
+	ret0, _ := ret[0].(*Pet)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// CreatePet indicates an expected call of CreatePet.
+func (mr *MockPetStoreClientMockRecorder) CreatePet(ctx, in interface{}, opts ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{ctx, in}, opts...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "CreatePet", reflect.TypeOf((*MockPetStoreClient)(nil).CreatePet), varargs...)
+}
+
+// DeletePet mocks base method.
+func (m *MockPetStoreClient) DeletePet(ctx context.Context, in *Pet, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{ctx, in}
+	for _, a := range opts {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "DeletePet", varargs...)
+	ret0, _ := ret[0].(*emptypb.Empty)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// DeletePet indicates an expected call of DeletePet.
+func (mr *MockPetStoreClientMockRecorder) DeletePet(ctx, in interface{}, opts ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{ctx, in}, opts...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DeletePet", reflect.TypeOf((*MockPetStoreClient)(nil).DeletePet), varargs...)
+}
+
 // GetAll mocks base method.
 func (m *MockPetStoreClient) GetAll(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*Pets, error) {
 	m.ctrl.T.Helper()
@@ -76,26 +116,6 @@ func (mr *MockPetStoreClientMockRecorder) GetPet(ctx, in interface{}, opts ...in
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetPet", reflect.TypeOf((*MockPetStoreClient)(nil).GetPet), varargs...)
 }
 
-// CreatePet mocks base method.
-func (m *MockPetStoreClient) CreatePet(ctx context.Context, in *Pet, opts ...grpc.CallOption) (*Pet, error) {
-	m.ctrl.T.Helper()
-	varargs := []interface{}{ctx, in}
-	for _, a := range opts {
-		varargs = append(varargs, a)
-	}
-	ret := m.ctrl.Call(m, "CreatePet", varargs...)
-	ret0, _ := ret[0].(*Pet)
-	ret1, _ := ret[1].(error)
-	return ret0, ret1
-}
-
-// CreatePet indicates an expected call of CreatePet.
-func (mr *MockPetStoreClientMockRecorder) CreatePet(ctx, in interface{}, opts ...interface{}) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	varargs := append([]interface{}{ctx, in}, opts...)
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "CreatePet", reflect.TypeOf((*MockPetStoreClient)(nil).CreatePet), varargs...)
-}
-
 // UpdatePet mocks base method.
 func (m *MockPetStoreClient) UpdatePet(ctx context.Context, in *Pet, opts ...grpc.CallOption) (*Pet, error) {
 	m.ctrl.T.Helper()
@@ -114,26 +134,6 @@ func (mr *MockPetStoreClientMockRecorder) UpdatePet(ctx, in interface{}, opts ..
 	mr.mock.ctrl.T.Helper()
 	varargs := append([]interface{}{ctx, in}, opts...)
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "UpdatePet", reflect.TypeOf((*MockPetStoreClient)(nil).UpdatePet), varargs...)
-}
-
-// DeletePet mocks base method.
-func (m *MockPetStoreClient) DeletePet(ctx context.Context, in *Pet, opts ...grpc.CallOption) (*emptypb.Empty, error) {
-	m.ctrl.T.Helper()
-	varargs := []interface{}{ctx, in}
-	for _, a := range opts {
-		varargs = append(varargs, a)
-	}
-	ret := m.ctrl.Call(m, "DeletePet", varargs...)
-	ret0, _ := ret[0].(*emptypb.Empty)
-	ret1, _ := ret[1].(error)
-	return ret0, ret1
-}
-
-// DeletePet indicates an expected call of DeletePet.
-func (mr *MockPetStoreClientMockRecorder) DeletePet(ctx, in interface{}, opts ...interface{}) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	varargs := append([]interface{}{ctx, in}, opts...)
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DeletePet", reflect.TypeOf((*MockPetStoreClient)(nil).DeletePet), varargs...)
 }
 
 // MockPetStoreServer is a mock of PetStoreServer interface.
@@ -157,6 +157,36 @@ func NewMockPetStoreServer(ctrl *gomock.Controller) *MockPetStoreServer {
 // EXPECT returns an object that allows the caller to indicate expected use.
 func (m *MockPetStoreServer) EXPECT() *MockPetStoreServerMockRecorder {
 	return m.recorder
+}
+
+// CreatePet mocks base method.
+func (m *MockPetStoreServer) CreatePet(arg0 context.Context, arg1 *Pet) (*Pet, error) {
+	m.ctrl.T.Helper()
+	ret := m.ctrl.Call(m, "CreatePet", arg0, arg1)
+	ret0, _ := ret[0].(*Pet)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// CreatePet indicates an expected call of CreatePet.
+func (mr *MockPetStoreServerMockRecorder) CreatePet(arg0, arg1 interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "CreatePet", reflect.TypeOf((*MockPetStoreServer)(nil).CreatePet), arg0, arg1)
+}
+
+// DeletePet mocks base method.
+func (m *MockPetStoreServer) DeletePet(arg0 context.Context, arg1 *Pet) (*emptypb.Empty, error) {
+	m.ctrl.T.Helper()
+	ret := m.ctrl.Call(m, "DeletePet", arg0, arg1)
+	ret0, _ := ret[0].(*emptypb.Empty)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// DeletePet indicates an expected call of DeletePet.
+func (mr *MockPetStoreServerMockRecorder) DeletePet(arg0, arg1 interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DeletePet", reflect.TypeOf((*MockPetStoreServer)(nil).DeletePet), arg0, arg1)
 }
 
 // GetAll mocks base method.
@@ -189,21 +219,6 @@ func (mr *MockPetStoreServerMockRecorder) GetPet(arg0, arg1 interface{}) *gomock
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetPet", reflect.TypeOf((*MockPetStoreServer)(nil).GetPet), arg0, arg1)
 }
 
-// CreatePet mocks base method.
-func (m *MockPetStoreServer) CreatePet(arg0 context.Context, arg1 *Pet) (*Pet, error) {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "CreatePet", arg0, arg1)
-	ret0, _ := ret[0].(*Pet)
-	ret1, _ := ret[1].(error)
-	return ret0, ret1
-}
-
-// CreatePet indicates an expected call of CreatePet.
-func (mr *MockPetStoreServerMockRecorder) CreatePet(arg0, arg1 interface{}) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "CreatePet", reflect.TypeOf((*MockPetStoreServer)(nil).CreatePet), arg0, arg1)
-}
-
 // UpdatePet mocks base method.
 func (m *MockPetStoreServer) UpdatePet(arg0 context.Context, arg1 *Pet) (*Pet, error) {
 	m.ctrl.T.Helper()
@@ -217,21 +232,6 @@ func (m *MockPetStoreServer) UpdatePet(arg0 context.Context, arg1 *Pet) (*Pet, e
 func (mr *MockPetStoreServerMockRecorder) UpdatePet(arg0, arg1 interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "UpdatePet", reflect.TypeOf((*MockPetStoreServer)(nil).UpdatePet), arg0, arg1)
-}
-
-// DeletePet mocks base method.
-func (m *MockPetStoreServer) DeletePet(arg0 context.Context, arg1 *Pet) (*emptypb.Empty, error) {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "DeletePet", arg0, arg1)
-	ret0, _ := ret[0].(*emptypb.Empty)
-	ret1, _ := ret[1].(error)
-	return ret0, ret1
-}
-
-// DeletePet indicates an expected call of DeletePet.
-func (mr *MockPetStoreServerMockRecorder) DeletePet(arg0, arg1 interface{}) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DeletePet", reflect.TypeOf((*MockPetStoreServer)(nil).DeletePet), arg0, arg1)
 }
 
 // mustEmbedUnimplementedPetStoreServer mocks base method.

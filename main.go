@@ -4,6 +4,7 @@ import (
 	_ "embed"
 	"fmt"
 	pathpkg "path"
+	"sort"
 	"text/template"
 
 	"google.golang.org/protobuf/compiler/protogen"
@@ -62,6 +63,23 @@ func parseFile(path string, file *protogen.File) (data Data) {
 	for k, v := range imports {
 		data.Imports = append(data.Imports, fmt.Sprintf(`%s "%s"`, v, k))
 	}
+
+	return orderData(data)
+}
+
+func orderData(data Data) Data {
+	services := data.Services
+	sort.Slice(services, func(i, j int) bool {
+		return services[i].Service < services[j].Service
+	})
+	for k := range services {
+		funcs := services[k].Funcs
+		sort.Slice(funcs, func(i, j int) bool {
+			return funcs[i].Func < funcs[j].Func
+		})
+		services[k].Funcs = funcs
+	}
+	data.Services = services
 	return data
 }
 
