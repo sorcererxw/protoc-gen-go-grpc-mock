@@ -32,16 +32,16 @@ func parseFile(path string, file *protogen.File) (data Data) {
 	data.Source = path
 	data.Package = string(file.GoPackageName)
 
-	imports := make(map[string]string)
+	imports := make(map[protogen.GoImportPath]string)
 
 	getMessageName := func(m *protogen.Message) string {
-		importPath := string(m.GoIdent.GoImportPath)
-		if importPath == `./` {
+		importPath := m.GoIdent.GoImportPath
+		if importPath == file.GoImportPath {
 			return m.GoIdent.GoName
 		}
 		alias, ok := imports[importPath]
 		if !ok {
-			alias = pathpkg.Base(importPath)
+			alias = pathpkg.Base(string(importPath))
 			imports[importPath] = alias
 		}
 		return alias + "." + m.GoIdent.GoName
