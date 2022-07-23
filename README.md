@@ -22,7 +22,7 @@ generated `petstore_grpc.pb.go`.
 #### gomock
 
 ```shell
-hyperfine "mockgen -source=petstore_grpc.pb.go -destination=petstore_grpc_mock.pb.go" 
+hyperfine "mockgen -source=petstore_grpc.pb.go -destination=mock/petstore_grpc_mock.pb.go" 
 ```
 
 ```
@@ -46,7 +46,7 @@ Benchmark #1: protoc --go-grpc-mock_out=. petstore.proto
 ## Installation
 
 ```
-go install github.com/sorcererxw/protoc-gen-go-grpc-mock
+go install github.com/sorcererxw/protoc-gen-go-grpc-mock@latest
 ```
 
 Also required:

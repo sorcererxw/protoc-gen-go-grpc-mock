@@ -9,7 +9,6 @@ import (
 
 	gomock "github.com/golang/mock/gomock"
 	grpc "google.golang.org/grpc"
-
 	emptypb "google.golang.org/protobuf/types/known/emptypb"
 )
 
@@ -160,123 +159,76 @@ func (m *MockPetStoreServer) EXPECT() *MockPetStoreServerMockRecorder {
 }
 
 // CreatePet mocks base method.
-func (m *MockPetStoreServer) CreatePet(arg0 context.Context, arg1 *Pet) (*Pet, error) {
+func (m *MockPetStoreServer) CreatePet(ctx context.Context, in *Pet) (*Pet, error) {
 	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "CreatePet", arg0, arg1)
+	ret := m.ctrl.Call(m, "CreatePet", ctx, in)
 	ret0, _ := ret[0].(*Pet)
 	ret1, _ := ret[1].(error)
 	return ret0, ret1
 }
 
 // CreatePet indicates an expected call of CreatePet.
-func (mr *MockPetStoreServerMockRecorder) CreatePet(arg0, arg1 interface{}) *gomock.Call {
+func (mr *MockPetStoreServerMockRecorder) CreatePet(ctx, in interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "CreatePet", reflect.TypeOf((*MockPetStoreServer)(nil).CreatePet), arg0, arg1)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "CreatePet", reflect.TypeOf((*MockPetStoreServer)(nil).CreatePet), ctx, in)
 }
 
 // DeletePet mocks base method.
-func (m *MockPetStoreServer) DeletePet(arg0 context.Context, arg1 *Pet) (*emptypb.Empty, error) {
+func (m *MockPetStoreServer) DeletePet(ctx context.Context, in *Pet) (*emptypb.Empty, error) {
 	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "DeletePet", arg0, arg1)
+	ret := m.ctrl.Call(m, "DeletePet", ctx, in)
 	ret0, _ := ret[0].(*emptypb.Empty)
 	ret1, _ := ret[1].(error)
 	return ret0, ret1
 }
 
 // DeletePet indicates an expected call of DeletePet.
-func (mr *MockPetStoreServerMockRecorder) DeletePet(arg0, arg1 interface{}) *gomock.Call {
+func (mr *MockPetStoreServerMockRecorder) DeletePet(ctx, in interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DeletePet", reflect.TypeOf((*MockPetStoreServer)(nil).DeletePet), arg0, arg1)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DeletePet", reflect.TypeOf((*MockPetStoreServer)(nil).DeletePet), ctx, in)
 }
 
 // GetAll mocks base method.
-func (m *MockPetStoreServer) GetAll(arg0 context.Context, arg1 *emptypb.Empty) (*Pets, error) {
+func (m *MockPetStoreServer) GetAll(ctx context.Context, in *emptypb.Empty) (*Pets, error) {
 	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "GetAll", arg0, arg1)
+	ret := m.ctrl.Call(m, "GetAll", ctx, in)
 	ret0, _ := ret[0].(*Pets)
 	ret1, _ := ret[1].(error)
 	return ret0, ret1
 }
 
 // GetAll indicates an expected call of GetAll.
-func (mr *MockPetStoreServerMockRecorder) GetAll(arg0, arg1 interface{}) *gomock.Call {
+func (mr *MockPetStoreServerMockRecorder) GetAll(ctx, in interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetAll", reflect.TypeOf((*MockPetStoreServer)(nil).GetAll), arg0, arg1)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetAll", reflect.TypeOf((*MockPetStoreServer)(nil).GetAll), ctx, in)
 }
 
 // GetPet mocks base method.
-func (m *MockPetStoreServer) GetPet(arg0 context.Context, arg1 *Pet) (*Pet, error) {
+func (m *MockPetStoreServer) GetPet(ctx context.Context, in *Pet) (*Pet, error) {
 	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "GetPet", arg0, arg1)
+	ret := m.ctrl.Call(m, "GetPet", ctx, in)
 	ret0, _ := ret[0].(*Pet)
 	ret1, _ := ret[1].(error)
 	return ret0, ret1
 }
 
 // GetPet indicates an expected call of GetPet.
-func (mr *MockPetStoreServerMockRecorder) GetPet(arg0, arg1 interface{}) *gomock.Call {
+func (mr *MockPetStoreServerMockRecorder) GetPet(ctx, in interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetPet", reflect.TypeOf((*MockPetStoreServer)(nil).GetPet), arg0, arg1)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetPet", reflect.TypeOf((*MockPetStoreServer)(nil).GetPet), ctx, in)
 }
 
 // UpdatePet mocks base method.
-func (m *MockPetStoreServer) UpdatePet(arg0 context.Context, arg1 *Pet) (*Pet, error) {
+func (m *MockPetStoreServer) UpdatePet(ctx context.Context, in *Pet) (*Pet, error) {
 	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "UpdatePet", arg0, arg1)
+	ret := m.ctrl.Call(m, "UpdatePet", ctx, in)
 	ret0, _ := ret[0].(*Pet)
 	ret1, _ := ret[1].(error)
 	return ret0, ret1
 }
 
 // UpdatePet indicates an expected call of UpdatePet.
-func (mr *MockPetStoreServerMockRecorder) UpdatePet(arg0, arg1 interface{}) *gomock.Call {
+func (mr *MockPetStoreServerMockRecorder) UpdatePet(ctx, in interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "UpdatePet", reflect.TypeOf((*MockPetStoreServer)(nil).UpdatePet), arg0, arg1)
-}
-
-// mustEmbedUnimplementedPetStoreServer mocks base method.
-func (m *MockPetStoreServer) mustEmbedUnimplementedPetStoreServer() {
-	m.ctrl.T.Helper()
-	m.ctrl.Call(m, "mustEmbedUnimplementedPetStoreServer")
-}
-
-// mustEmbedUnimplementedPetStoreServer indicates an expected call of mustEmbedUnimplementedPetStoreServer.
-func (mr *MockPetStoreServerMockRecorder) mustEmbedUnimplementedPetStoreServer() *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "mustEmbedUnimplementedPetStoreServer", reflect.TypeOf((*MockPetStoreServer)(nil).mustEmbedUnimplementedPetStoreServer))
-}
-
-// MockUnsafePetStoreServer is a mock of UnsafePetStoreServer interface.
-type MockUnsafePetStoreServer struct {
-	ctrl     *gomock.Controller
-	recorder *MockUnsafePetStoreServerMockRecorder
-}
-
-// MockUnsafePetStoreServerMockRecorder is the mock recorder for MockUnsafePetStoreServer.
-type MockUnsafePetStoreServerMockRecorder struct {
-	mock *MockUnsafePetStoreServer
-}
-
-// NewMockUnsafePetStoreServer creates a new mock instance.
-func NewMockUnsafePetStoreServer(ctrl *gomock.Controller) *MockUnsafePetStoreServer {
-	mock := &MockUnsafePetStoreServer{ctrl: ctrl}
-	mock.recorder = &MockUnsafePetStoreServerMockRecorder{mock}
-	return mock
-}
-
-// EXPECT returns an object that allows the caller to indicate expected use.
-func (m *MockUnsafePetStoreServer) EXPECT() *MockUnsafePetStoreServerMockRecorder {
-	return m.recorder
-}
-
-// mustEmbedUnimplementedPetStoreServer mocks base method.
-func (m *MockUnsafePetStoreServer) mustEmbedUnimplementedPetStoreServer() {
-	m.ctrl.T.Helper()
-	m.ctrl.Call(m, "mustEmbedUnimplementedPetStoreServer")
-}
-
-// mustEmbedUnimplementedPetStoreServer indicates an expected call of mustEmbedUnimplementedPetStoreServer.
-func (mr *MockUnsafePetStoreServerMockRecorder) mustEmbedUnimplementedPetStoreServer() *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "mustEmbedUnimplementedPetStoreServer", reflect.TypeOf((*MockUnsafePetStoreServer)(nil).mustEmbedUnimplementedPetStoreServer))
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "UpdatePet", reflect.TypeOf((*MockPetStoreServer)(nil).UpdatePet), ctx, in)
 }
