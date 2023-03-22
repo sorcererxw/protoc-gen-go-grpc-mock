@@ -6,6 +6,7 @@ import (
 
 	"github.com/golang/mock/mockgen/model"
 	"google.golang.org/protobuf/compiler/protogen"
+	"google.golang.org/protobuf/types/pluginpb"
 )
 
 type methodType int
@@ -385,6 +386,7 @@ func baseServerStreamMethods() []*model.Method {
 
 func main() {
 	protogen.Options{}.Run(func(plugin *protogen.Plugin) error {
+		plugin.SupportedFeatures = uint64(pluginpb.CodeGeneratorResponse_FEATURE_PROTO3_OPTIONAL)
 		for path, file := range plugin.FilesByPath {
 			if !file.Generate {
 				continue
