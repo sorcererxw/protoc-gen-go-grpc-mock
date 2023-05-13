@@ -5,10 +5,10 @@ plugins:
     out: .
     opt: paths=source_relative
 
-  - name: go-grpc
+  - plugin: go-grpc
     out: .
     opt: paths=source_relative
 
-  - name: go-grpc-mock
+  - plugin: go-grpc-mock
     out: .
     opt: paths=source_relative

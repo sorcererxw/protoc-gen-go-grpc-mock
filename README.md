@@ -68,15 +68,15 @@ protoc --go_out=. --go-grpc_out=. --go-grpc-mock_out=. petstore.proto
 version: v1
 
 plugins:
-  - name: go
+  - plugin: go
     out: .
     opt: paths=source_relative
 
-  - name: go-grpc
+  - plugin: go-grpc
     out: .
     opt: paths=source_relative
 
-  - name: go-grpc-mock
+  - plugin: go-grpc-mock
     out: .
     opt: paths=source_relative
 ```
