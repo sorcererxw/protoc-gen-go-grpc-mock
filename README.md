@@ -1,7 +1,7 @@
 # protoc-gen-go-grpc-mock
 
 `protoc-gen-go-grpc-mock` generates gRPC service mocks
-compatible with `golang/mock`(aka `gomock`).
+compatible with `go.uber.org/mock`(aka `gomock`).
 
 ## What different from `gomock`
 
@@ -22,7 +22,7 @@ generated `petstore_grpc.pb.go`.
 #### gomock
 
 ```shell
-hyperfine "mockgen -source=petstore_grpc.pb.go -destination=mock/petstore_grpc_mock.pb.go" 
+hyperfine "mockgen -source=petstore_grpc.pb.go -destination=mock/petstore_grpc_mock.pb.go"
 ```
 
 ```
@@ -34,7 +34,7 @@ Benchmark #1: mockgen -source=petstore_grpc.pb.go -destination=petstore_grpc_moc
 #### protoc-gen-go-grpc-mock
 
 ```shell
-hyperfine "protoc --go-grpc-mock_out=. petstore.proto" 
+hyperfine "protoc --go-grpc-mock_out=. petstore.proto"
 ```
 
 ```
@@ -59,7 +59,7 @@ Also required:
 ### with protoc
 
 ```shell
-protoc --go_out=. --go-grpc_out=. --go-grpc-mock_out=. petstore.proto 
+protoc --go_out=. --go-grpc_out=. --go-grpc-mock_out=. petstore.proto
 ```
 
 ### with buf
@@ -68,13 +68,15 @@ protoc --go_out=. --go-grpc_out=. --go-grpc-mock_out=. petstore.proto
 version: v1
 
 plugins:
-  - plugin: go
+  - plugin: buf.build/protocolbuffers/go:v1.30.0
     out: .
-    opt: paths=source_relative
+    opt:
+      - paths=source_relative
 
-  - plugin: go-grpc
+  - plugin: buf.build/grpc/go:v1.3.0
     out: .
-    opt: paths=source_relative
+    opt:
+      - paths=source_relative
 
   - plugin: go-grpc-mock
     out: .

@@ -13,12 +13,12 @@ import (
 	"strings"
 	"unicode"
 
-	"github.com/golang/mock/mockgen/model"
+	"go.uber.org/mock/mockgen/model"
 	toolsimports "golang.org/x/tools/imports"
 )
 
 const (
-	gomockImportPath = "github.com/golang/mock/gomock"
+	gomockImportPath = "go.uber.org/mock/gomock"
 )
 
 type generator struct {
